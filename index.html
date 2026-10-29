@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2a111c">
+  <meta name="description" content="一封信，写给秦美涵。10 月 29 日，生日快乐。来自李明达。">
+  <title>一封信</title>
+  <link rel="preload" as="image" href="assets/photos/01.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232a111c'/%3E%3Cpath d='M32 50c0-11 3-20 12-28-2 12-5 21-12 28Z' fill='%23f7a6bd'/%3E%3Cpath d='M32 50c0-11-3-20-12-28 2 12 5 21 12 28Z' fill='%23e86f98'/%3E%3Cpath d='M32 50c-5-7-5-15 0-22 5 7 5 15 0 22Z' fill='%23ffd9e4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-locked">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <noscript>
+    <div class="noscript">这封小情书需要 JavaScript 才能打开。请在浏览器中允许 JavaScript 后刷新。</div>
+  </noscript>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+  <canvas id="petalCanvas" aria-hidden="true"></canvas>
+
+  <!-- ================= INTRO ================= -->
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="intro__orb intro__orb--one" aria-hidden="true"></div>
+    <div class="intro__orb intro__orb--two" aria-hidden="true"></div>
+    <div class="intro__stars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="intro__inner">
+      <p class="intro__kicker">FOR JIN · 10.29</p>
+
+      <div class="intro__lotus" id="introLotus" aria-hidden="true">
+        <div class="intro__halo"></div>
+        <svg viewBox="0 0 140 220" class="intro__lotus-svg"><use href="#lotusSymbol"></use></svg>
+        <span class="intro__spark intro__spark--a"></span>
+        <span class="intro__spark intro__spark--b"></span>
+        <span class="intro__spark intro__spark--c"></span>
+      </div>
+
+      <p class="intro__small">淤泥里，开出一朵</p>
+      <h1 class="intro__title" id="introTitle">烬</h1>
+      <p class="intro__sub">给烬的生日花园 · 来自李明达</p>
+
+      <div class="intro__actions">
+        <button class="intro__enter" id="enterBtn" type="button">
+          <span>轻触，让今天开花</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="intro__quiet" id="quietBtn" type="button">安静地进入</button>
+      </div>
+      <p class="intro__hint">建议开着声音 · 一首很轻的小曲</p>
+    </div>
+
+    <div class="intro__mud" aria-hidden="true"></div>
+  </div>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#today" aria-label="回到顶部">
+      <span class="nav__flower" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><use href="#miniLotus"></use></svg>
+      </span>
+      <span>烬 <i>·</i> JIN</span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="页面导航">
+      <a href="#today">今日</a>
+      <a href="#days">814</a>
+      <a href="#pond">花塘</a>
+      <a href="#cake">蛋糕</a>
+      <a href="#gallery">相册</a>
+      <a href="#letter">信</a>
+    </nav>
+
+    <div class="nav__right">
+      <button class="sound" id="soundBtn" type="button" aria-pressed="false" aria-label="打开音乐">
+        <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="sound__text">音乐</span>
+      </button>
+      <button class="nav__menu" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <main id="main">
+    <section class="hero" id="today">
+      <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow">2026 / 10 / 29 · 今天只属于你</p>
+          <h1 class="hero__title">
+            <span class="hero__name">烬</span><span class="hero__comma">，</span><br>
+            生日快乐<span class="hero__dot">。</span>
+          </h1>
+          <p class="hero__sub">今天不赶路，只开花。</p>
+
+          <div class="hero__story">
+            <p>814 天，是情侣空间替我们记住的数字。<br>可我知道，真正爱你的日子，比这个数字早得多。</p>
+            <p>那些没被算进去的争吵、和好、沉默和拥抱——<br>日历不记账，我心里一笔一笔都记着。</p>
+          </div>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#pond">
+              <span>去淤泥里种一朵莲</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#letter">先读一封信</a>
+          </div>
+
+          <p class="hero__note">今天不许皱眉，许愿就好。</p>
+        </div>
+
+        <div class="hero__visual">
+          <div class="orbit" aria-hidden="true">
+            <svg viewBox="0 0 300 300">
+              <defs>
+                <path id="orbitPath" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"></path>
+              </defs>
+              <text><textPath href="#orbitPath" startOffset="0">HAPPY BIRTHDAY JIN · 10.29 · MY FAVOURITE PERSON · </textPath></text>
+            </svg>
+          </div>
+
+          <figure class="portrait">
+            <div class="portrait__frame">
+              <img src="assets/photos/01.jpg" width="1124" height="1500" alt="烬穿着绿色衣裙的自拍，额前戴着宝石额饰">
+            </div>
+            <figcaption class="portrait__tag">
+              <span>BIRTHDAY GIRL</span>
+              <strong>我的偏爱</strong>
+            </figcaption>
+            <span class="portrait__tape" aria-hidden="true"></span>
+          </figure>
+
+          <div class="hero__badge">
+            <span class="hero__badge-small">QQ 情侣空间</span>
+            <strong>第 814 天</strong>
+            <span class="hero__badge-line">且远不止 814 天</span>
+          </div>
+
+          <div class="hero__lotus" aria-hidden="true">
+            <svg viewBox="0 0 140 220"><use href="#lotusSymbol"></use></svg>
+          </div>
+          <div class="hero__leaf hero__leaf--left" aria-hidden="true"></div>
+          <div class="hero__leaf hero__leaf--right" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#days" aria-label="向下看看">
+        <span>向下</span>
+        <i aria-hidden="true"></i>
+      </a>
+
+      <div class="hero__mud" aria-hidden="true">
+        <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
+          <path d="M0,88 C190,30 330,140 540,105 C720,75 860,20 1050,64 C1220,104 1320,58 1440,84 L1440,180 L0,180 Z" fill="#2a111c"></path>
+          <path d="M0,118 C220,75 380,150 590,126 C780,105 910,62 1100,94 C1250,119 1360,92 1440,111 L1440,180 L0,180 Z" fill="#f9eee8"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ================= 814 DAYS ================= -->
+    <section class="days section" id="days">
+      <div class="days__watermark" aria-hidden="true">814</div>
+      <div class="wrap">
+        <div class="days__head">
+          <div class="days__intro reveal">
+            <p class="eyebrow eyebrow--dark">ABOUT 814 DAYS</p>
+            <h2 class="h2">数字会漏掉一些日子，<br>但爱不会。</h2>
+            <p class="days__lead">814 天前，情侣空间亮起来。那是我们愿意给世界看的开始。<br>可真正的故事，比它更早——早到我已经想不起没有你的日子是什么样。</p>
+            <p class="days__body">中间那些不愉快，系统没有算进去，我也没有把它们当作浪费。它们像池底的淤泥，不好看，却托住了后来开出的每一朵花。</p>
+            <p class="days__body">所以今天不纠结算术题。第 814 天，只是我们刚好走到这里；往后每一天，都算我额外赚到的。</p>
+          </div>
+
+          <div class="days__card reveal" data-delay="120">
+            <span class="days__card-kicker">QQ 情侣空间 · 截至今天</span>
+            <div class="days__number"><span id="dayCount">0</span><em>天</em></div>
+            <div class="days__card-foot">
+              <span>仍在继续</span>
+              <span class="days__pulse" aria-hidden="true"></span>
+            </div>
+            <div class="days__card-rule"></div>
+            <div class="days__mini">
+              <div><strong>∞</strong><span>没被算进去的喜欢</span></div>
+              <div><strong>1</strong><span>独一无二的烬</span></div>
+            </div>
+            <button class="days__tease" id="dayTease" type="button" aria-expanded="false" aria-controls="truthNote">
+              <span>点开：真正的起点</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="truth" id="truthNote" hidden>
+          <div class="truth__inner">
+            <span class="truth__mark" aria-hidden="true">烬</span>
+            <p>真正的起点，在 814 天之前很久。<br>从哪一天开始算？我也说不准。<br>大概是从第一次看见你笑，心里“咯噔”一下的那天起，<br>日历就再也追不上喜欢你的速度了。</p>
+          </div>
+        </div>
+
+        <div class="river reveal" aria-label="我们的时间线">
+          <div class="river__line" aria-hidden="true"><span></span></div>
+          <div class="river__node">
+            <span class="river__dot"></span>
+            <span class="river__when">很久以前</span>
+            <span class="river__what">故事真正开始的地方</span>
+          </div>
+          <div class="river__node">
+            <span class="river__dot"></span>
+            <span class="river__when">814 天前</span>
+            <span class="river__what">情侣空间亮起</span>
+          </div>
+          <div class="river__node river__node--mud">
+            <span class="river__dot"></span>
+            <span class="river__when">中间那些天</span>
+            <span class="river__what">吵架、和好，没被计算</span>
+          </div>
+          <div class="river__node river__node--today">
+            <span class="river__dot"></span>
+            <span class="river__when">10.29 · 今天</span>
+            <span class="river__what">她生日，也是新的起点</span>
+          </div>
+        </div>
+
+        <blockquote class="days__quote reveal">
+          “系统只记录 814 天。<br>我心里的日历，从第一次心动那一页就开始写，写到今天，纸已经不够了。”
+          <cite>—— 李明达</cite>
+        </blockquote>
+      </div>
+
+      <div class="days__soil" aria-hidden="true"></div>
+    </section>
+
+    <!-- ================= POND ================= -->
+    <section class="pond-section section" id="pond">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">THE MUD GARDEN</p>
+          <h2 class="h2 h2--light">淤泥花塘</h2>
+          <p class="section-head__sub">别人祝你把日子过成花。我想说——淤泥也没关系，淤泥里也能开花，而且开得更用力。</p>
+          <p class="section-head__mini">点一点池塘，或者按右边的按钮，替我种一朵莲。集满五朵，有句话只给你看。</p>
+        </header>
+
+        <div class="pond-layout">
+          <div class="pond-wrap reveal">
+            <div class="pond" id="pondStage" role="group" aria-label="淤泥花塘，点击种植莲花">
+              <div class="pond__sky" aria-hidden="true">
+                <span class="pond__star pond__star--1"></span>
+                <span class="pond__star pond__star--2"></span>
+                <span class="pond__star pond__star--3"></span>
+                <span class="pond__star pond__star--4"></span>
+                <span class="pond__moon"></span>
+              </div>
+              <div class="pond__water" aria-hidden="true"></div>
+              <div class="pond__pads" aria-hidden="true">
+                <span class="lily lily--1"></span>
+                <span class="lily lily--2"></span>
+                <span class="lily lily--3"></span>
+                <span class="lily lily--4"></span>
+                <span class="lily lily--5"></span>
+              </div>
+              <div class="pond__mud" aria-hidden="true"></div>
+              <div class="pond__lotuses" id="pondLotuses"></div>
+              <div class="pond__hint" id="pondHint">
+                <span class="pond__hint-dot" aria-hidden="true"></span>
+                点一点淤泥 · 种下一朵莲
+              </div>
+              <div class="pond__meter" aria-live="polite"><span id="pondCount">0</span><i>/ 5 朵</i></div>
+              <div class="pond__final" id="pondFinal" hidden>
+                <span>五朵莲，开好了。</span>
+                <strong>岁岁有我。</strong>
+              </div>
+            </div>
+          </div>
+
+          <aside class="notes reveal" data-delay="150">
+            <p class="notes__kicker">WISHES IN THE MUD</p>
+            <h3 class="notes__title">花开时，想对你说</h3>
+            <ol class="notes__list" id="pondNotes">
+              <li data-note="0"><span class="notes__num">01</span><p>第一朵，等你种下。</p></li>
+              <li data-note="1"><span class="notes__num">02</span><p>第二朵，还藏在泥里。</p></li>
+              <li data-note="2"><span class="notes__num">03</span><p>第三朵，慢慢来。</p></li>
+              <li data-note="3"><span class="notes__num">04</span><p>第四朵，别着急。</p></li>
+              <li data-note="4"><span class="notes__num">05</span><p>第五朵，等你亲手种下。</p></li>
+            </ol>
+            <div class="notes__actions">
+              <button class="btn btn--small btn--rose" id="plantBtn" type="button">替我种一朵</button>
+              <button class="notes__reset" id="pondReset" type="button">重新种一塘</button>
+            </div>
+            <p class="notes__foot">花是种给你的，泥是留给我的。<br>不好的日子，我替你兜着。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAKE ================= -->
+    <section class="cake-section section" id="cake">
+      <div class="cake-section__watermark" aria-hidden="true">10.29</div>
+      <div class="wrap cake-layout">
+        <div class="cake-copy reveal">
+          <p class="eyebrow eyebrow--dark">MAKE A WISH · 10.29</p>
+          <h2 class="h2">今日份许愿</h2>
+          <p class="cake-copy__lead">蜡烛我替你点好了。<br>你可以一口气吹灭，也可以慢慢来。</p>
+          <p class="cake-copy__body">愿望不用告诉我，我负责让它一点点实现。</p>
+
+          <div class="cake-actions">
+            <button class="btn btn--dark" id="blowBtn" type="button">
+              <span id="blowBtnText">替我吹灭蜡烛</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <p class="cake-copy__hint">每根蜡烛都可以单独点灭 · 贪心的话，再点一次重新点亮</p>
+
+          <div class="wish-card" id="wishCard" aria-live="polite">
+            <div class="wish-card__inner">
+              <p class="wish-card__kicker">WISH RECEIVED</p>
+              <h3>愿望收到了。</h3>
+              <p>那我也说三个：</p>
+              <ul>
+                <li>一愿烬天天开心；</li>
+                <li>二愿烬不用懂事；</li>
+                <li>三愿李明达一直在。</li>
+              </ul>
+              <span class="wish-card__sign">—— 李明达，今日及以后</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cake-stage reveal" data-delay="120">
+          <div class="cake-scene" id="cakeScene">
+            <div class="cake-glow" aria-hidden="true"></div>
+            <div class="cake" id="cakeArt">
+              <div class="candles" id="candles" aria-label="五根生日蜡烛">
+                <button class="candle is-lit" type="button" aria-label="吹灭第 1 根蜡烛" aria-pressed="true" data-candle="0">
+                  <span class="candle__flame"></span><span class="candle__smoke"></span><span class="candle__body"></span><span class="candle__wick"></span>
+                </button>
+                <button class="candle is-lit" type="button" aria-label="吹灭第 2 根蜡烛" aria-pressed="true" data-candle="1">
+                  <span class="candle__flame"></span><span class="candle__smoke"></span><span class="candle__body"></span><span class="candle__wick"></span>
+                </button>
+                <button class="candle is-lit" type="button" aria-label="吹灭第 3 根蜡烛" aria-pressed="true" data-candle="2">
+                  <span class="candle__flame"></span><span class="candle__smoke"></span><span class="candle__body"></span><span class="candle__wick"></span>
+                </button>
+                <button class="candle is-lit" type="button" aria-label="吹灭第 4 根蜡烛" aria-pressed="true" data-candle="3">
+                  <span class="candle__flame"></span><span class="candle__smoke"></span><span class="candle__body"></span><span class="candle__wick"></span>
+                </button>
+                <button class="candle is-lit" type="button" aria-label="吹灭第 5 根蜡烛" aria-pressed="true" data-candle="4">
+                  <span class="candle__flame"></span><span class="candle__smoke"></span><span class="candle__body"></span><span class="candle__wick"></span>
+                </button>
+              </div>
+
+              <div class="cake-topper" aria-hidden="true">
+                <span class="cake-topper__stick"></span>
+                <span class="cake-topper__heart">烬</span>
+                <span class="cake-topper__stick"></span>
+              </div>
+
+              <div class="tier tier--top">
+                <span class="tier__frosting"></span>
+                <span class="tier__pearls"></span>
+                <span class="sprinkle sprinkle--1">✦</span>
+                <span class="sprinkle sprinkle--2">♥</span>
+                <span class="sprinkle sprinkle--3">✦</span>
+              </div>
+              <div class="tier tier--middle">
+                <span class="tier__frosting"></span>
+                <span class="tier__pearls"></span>
+                <span class="sprinkle sprinkle--4">♥</span>
+                <span class="sprinkle sprinkle--5">✦</span>
+                <span class="sprinkle sprinkle--6">♥</span>
+                <span class="sprinkle sprinkle--7">✦</span>
+              </div>
+              <div class="tier tier--bottom">
+                <span class="tier__frosting"></span>
+                <span class="tier__pearls"></span>
+                <span class="sprinkle sprinkle--8">✦</span>
+                <span class="sprinkle sprinkle--9">♥</span>
+                <span class="sprinkle sprinkle--10">✦</span>
+                <span class="sprinkle sprinkle--11">♥</span>
+              </div>
+              <div class="cake__plate" aria-hidden="true"></div>
+              <div class="cake__shadow" aria-hidden="true"></div>
+            </div>
+            <div class="cake-confetti" id="cakeConfetti" aria-hidden="true"></div>
+          </div>
+          <p class="cake-stage__caption">10.29 · 生日快乐，烬</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section class="gallery-section section" id="gallery">
+      <div class="wrap">
+        <header class="gallery-head reveal">
+          <div>
+            <p class="eyebrow eyebrow--dark">21 MOMENTS OF JIN</p>
+            <h2 class="h2">关于烬的<br>二十一个瞬间</h2>
+          </div>
+          <div class="gallery-head__side">
+            <p>相册是时间的淤泥，把好看的你一层层沉下来。<br>今天翻给你看。</p>
+            <div class="gallery-head__actions">
+              <button class="btn btn--small btn--outline" id="randomPhoto" type="button">
+                <span>随便看一张</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4V7Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+              </button>
+              <span class="gallery-head__hint">点开看大图</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="gallery-grid" id="galleryGrid"></div>
+
+        <p class="gallery-foot reveal">每一张都是你愿意给我看的瞬间，我都很珍惜。<br><span>还有好多没被拍下来的你，也存在我这里。</span></p>
+      </div>
+    </section>
+
+    <!-- ================= LETTER ================= -->
+    <section class="letter-section section" id="letter">
+      <div class="letter-section__glow" aria-hidden="true"></div>
+      <div class="wrap letter-layout">
+        <div class="letter-intro reveal">
+          <p class="eyebrow">A LETTER UNDER THE MUD</p>
+          <h2 class="h2 h2--light">藏在淤泥<br>底下的一封信</h2>
+          <p class="letter-intro__sub">得有点耐心，往下挖一挖。</p>
+          <button class="btn btn--primary letter-intro__btn" id="openLetterBtn" type="button">
+            <span>拆开信封</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="letter-intro__hint">写给烬 · 写于 2026.10.29</p>
+        </div>
+
+        <div class="letter-stage reveal" data-delay="120">
+          <button class="envelope" id="envelope" type="button" aria-label="拆开李明达写给烬的信" aria-expanded="false" aria-controls="letterModal">
+            <span class="envelope__shadow" aria-hidden="true"></span>
+            <span class="envelope__body" aria-hidden="true"></span>
+            <span class="envelope__flap" aria-hidden="true"></span>
+            <span class="envelope__stamp" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><use href="#miniLotus"></use></svg>
+              <i>10.29</i>
+            </span>
+            <span class="envelope__address">
+              <i>TO</i>
+              <strong>烬</strong>
+              <span>from 李明达</span>
+            </span>
+            <span class="wax" aria-hidden="true">烬</span>
+          </button>
+          <p class="letter-stage__hint">轻触信封 · 里面有一封写给你的信</p>
+        </div>
+      </div>
+
+      <div class="letter-modal" id="letterModal" aria-hidden="true">
+        <div class="letter-modal__backdrop" data-close-letter></div>
+        <article class="letter-paper" id="letterPaper" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+          <button class="letter-paper__close" id="closeLetterBtn" type="button" aria-label="把信折回去">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+          <div class="letter-paper__corner letter-paper__corner--tl" aria-hidden="true"></div>
+          <div class="letter-paper__corner letter-paper__corner--br" aria-hidden="true"></div>
+
+          <header class="letter-paper__head">
+            <span class="letter-paper__seal" aria-hidden="true">涵</span>
+            <p id="letterTitle">TO QIN MEIHAN · ON HER BIRTHDAY</p>
+            <time datetime="2026-10-29">2026.10.29</time>
+          </header>
+
+          <div class="letter-paper__content">
+            <p class="letter-paper__salute">秦美涵：</p>
+            <p>见字如面。生日快乐。</p>
+            <p>我很认真地想了很久，该在这一天对你说什么。最后发现，最想说的都是些很笨的话。</p>
+            <p>我以前给你写的信，好像都不长。有时候，甚至只是在信纸上画一个爱心。不是不想多写，是我嘴笨——每次真的想把爱意说出口，话就卡在喉咙里，最后只剩一个笨拙的爱心。我总以为，一个爱心也能留下很多想象，能让你知道那些我没说出口的话。</p>
+            <p>要是你在我身边就好了。你从我的眼睛里，就能看出来我有多爱你。</p>
+            <p>谢谢你在 814 天前，愿意和我把情侣空间点亮。<br>也谢谢那些没有被系统算进去的日子——我们闹别扭、赌气、谁都不肯先低头的时候，你还是没有走。那些日子像淤泥，不好看，可它们把我们托住了，让这朵花开得比想象中更久。</p>
+            <p>别人都祝你无忧无虑。我想贪心一点：<br>我祝你难过的时候，第一反应是来找我；<br>祝你不用永远懂事，不用永远坚强，不用永远把情绪藏好；<br>祝你在李明达这里，可以放心做一个会生气、会撒娇、会被无条件偏爱的秦美涵。</p>
+            <p>我想做那个一直护着你的人：做你难过时可以靠一靠的土，做你开心时陪你笑的风，做你以后每一个生日都记得点蜡烛的人。</p>
+            <p>如果许愿有用，我替你把“李明达会一直在”这条先预定了。期限是很久很久以后，久到日历都不够写。</p>
+            <p>十月的风已经开始凉了，记得多穿一点。<br>剩下的路，我牵着你走。</p>
+            <p>生日快乐，我的秦美涵。</p>
+          </div>
+
+          <footer class="letter-paper__foot">
+            <p class="letter-paper__sign">永远站在你这边的<br><strong>李明达</strong></p>
+            <p class="letter-paper__ps"><span>P.S.</span> 明年生日，我还想在这个页面里，再加一页。</p>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__mud" aria-hidden="true"></div>
+    <div class="wrap footer__inner">
+      <p class="footer__kicker">FOR JIN · WITH ALL MY LOVE</p>
+      <p class="footer__title">给烬的生日花园</p>
+      <p class="footer__meta">2026.10.29 · 由李明达亲手种下</p>
+      <p class="footer__note">页面会一直留着。明年、后年、很多很多年，再加新的花。</p>
+      <button class="footer__secret" id="secretLotus" type="button" aria-label="摸一摸这朵莲，有彩蛋">
+        <svg viewBox="0 0 140 220" aria-hidden="true"><use href="#lotusSymbol"></use></svg>
+        <span>摸一摸这朵莲</span>
+      </button>
+      <p class="footer__tiny">第 814 天，以及更久。</p>
+    </div>
+  </footer>
+
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片大图" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="关闭大图">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" type="button" aria-label="上一张">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+    </button>
+    <figure class="lightbox__figure">
+      <div class="lightbox__imgwrap">
+        <img id="lightboxImg" src="" alt="">
+      </div>
+      <figcaption class="lightbox__caption">
+        <p id="lightboxCaption"></p>
+        <span id="lightboxCount"></span>
+        <i>李明达私藏</i>
+      </figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" type="button" aria-label="下一张">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= SVG SPRITE ================= -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="petalGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffe3ec"></stop>
+        <stop offset="0.45" stop-color="#f9b6c9"></stop>
+        <stop offset="1" stop-color="#dc6f93"></stop>
+      </linearGradient>
+      <linearGradient id="petalGrad2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff5f8"></stop>
+        <stop offset="0.6" stop-color="#ffd4df"></stop>
+        <stop offset="1" stop-color="#ef8faa"></stop>
+      </linearGradient>
+      <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#78946c"></stop>
+        <stop offset="1" stop-color="#405c42"></stop>
+      </linearGradient>
+      <radialGradient id="goldGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#fff2c9"></stop>
+        <stop offset="0.55" stop-color="#eac47c"></stop>
+        <stop offset="1" stop-color="#b9883d"></stop>
+      </radialGradient>
+
+      <symbol id="lotusSymbol" viewBox="0 0 140 220">
+        <path d="M70 98 C67 132 73 166 68 208" fill="none" stroke="#54704e" stroke-width="4" stroke-linecap="round"></path>
+        <path d="M70 172 C48 158 25 163 12 181 C36 192 58 188 70 172Z" fill="url(#leafGrad)" opacity="0.92"></path>
+        <path d="M70 180 C92 168 114 172 128 190 C105 199 83 195 70 180Z" fill="url(#leafGrad)" opacity="0.86"></path>
+        <g transform="translate(70 94)">
+          <g fill="url(#petalGrad)" stroke="#ffffff" stroke-opacity="0.18" stroke-width="0.8">
+            <path d="M0 0 C-19 -27 -21 -57 0 -78 C21 -57 19 -27 0 0Z" transform="rotate(-72)"></path>
+            <path d="M0 0 C-19 -27 -21 -57 0 -78 C21 -57 19 -27 0 0Z" transform="rotate(-48)"></path>
+            <path d="M0 0 C-19 -27 -21 -57 0 -78 C21 -57 19 -27 0 0Z" transform="rotate(-24)"></path>
+            <path d="M0 0 C-19 -27 -21 -57 0 -78 C21 -57 19 -27 0 0Z" transform="rotate(0)"></path>
+            <path d="M0 0 C-19 -27 -21 -57 0 -78 C21 -57 19 -27 0 0Z" transform="rotate(24)"></path>
+            <path d="M0 0 C-19 -27 -21 -57 0 -78 C21 -57 19 -27 0 0Z" transform="rotate(48)"></path>
+            <path d="M0 0 C-19 -27 -21 -57 0 -78 C21 -57 19 -27 0 0Z" transform="rotate(72)"></path>
+          </g>
+          <g fill="url(#petalGrad2)" stroke="#ffffff" stroke-opacity="0.28" stroke-width="0.7">
+            <path d="M0 -2 C-13 -20 -14 -41 0 -58 C14 -41 13 -20 0 -2Z" transform="rotate(-46)"></path>
+            <path d="M0 -2 C-13 -20 -14 -41 0 -58 C14 -41 13 -20 0 -2Z" transform="rotate(-23)"></path>
+            <path d="M0 -2 C-13 -20 -14 -41 0 -58 C14 -41 13 -20 0 -2Z" transform="rotate(0)"></path>
+            <path d="M0 -2 C-13 -20 -14 -41 0 -58 C14 -41 13 -20 0 -2Z" transform="rotate(23)"></path>
+            <path d="M0 -2 C-13 -20 -14 -41 0 -58 C14 -41 13 -20 0 -2Z" transform="rotate(46)"></path>
+          </g>
+          <circle cx="0" cy="-24" r="7.5" fill="url(#goldGrad)"></circle>
+          <g fill="#f5d08b">
+            <circle cx="-13" cy="-30" r="2"></circle>
+            <circle cx="-5" cy="-36" r="1.6"></circle>
+            <circle cx="6" cy="-36" r="1.6"></circle>
+            <circle cx="13" cy="-30" r="2"></circle>
+            <circle cx="0" cy="-40" r="1.7"></circle>
+          </g>
+        </g>
+      </symbol>
+
+      <symbol id="miniLotus" viewBox="0 0 64 64">
+        <path d="M32 56 C29 43 31 33 32 26" fill="none" stroke="#54704e" stroke-width="2.4" stroke-linecap="round"></path>
+        <g transform="translate(32 30)">
+          <path d="M0 0 C-9 -7 -11 -17 0 -26 C11 -17 9 -7 0 0Z" fill="#f7a6bd" transform="rotate(-52)"></path>
+          <path d="M0 0 C-9 -7 -11 -17 0 -26 C11 -17 9 -7 0 0Z" fill="#ef8aa8" transform="rotate(-26)"></path>
+          <path d="M0 0 C-9 -7 -11 -17 0 -26 C11 -17 9 -7 0 0Z" fill="#ffd4df" transform="rotate(0)"></path>
+          <path d="M0 0 C-9 -7 -11 -17 0 -26 C11 -17 9 -7 0 0Z" fill="#ef8aa8" transform="rotate(26)"></path>
+          <path d="M0 0 C-9 -7 -11 -17 0 -26 C11 -17 9 -7 0 0Z" fill="#f7a6bd" transform="rotate(52)"></path>
+          <circle cx="0" cy="-8" r="3" fill="#eac47c"></circle>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
